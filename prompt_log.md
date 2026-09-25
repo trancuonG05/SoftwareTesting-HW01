@@ -150,17 +150,157 @@
 
 ---
 
-## 📌 Prompt #02: Giải thích sự cố lỗi phần mềm (Phục vụ Requirement 2)
-* **Thời gian thực hiện (Timestamp):** [Ví dụ: 15:10 24/09/2026]
-* **Công cụ AI sử dụng:** [Ví dụ: ChatGPT-4o / Claude 3.5 Sonnet]
+## 📌 Prompt #02: Thu thập 10 lỗi phần mềm 2022–2026 * **Thời gian thực hiện (Timestamp):** 11:36 25/09/2026
+* **Công cụ AI sử dụng:** Gemini 3.8 Flash
 * **Nội dung Prompt (Verbatim):**
   ```text
-  Hãy giải thích nguyên nhân kỹ thuật, mức độ thiệt hại và giải pháp của sự cố Air Canada Chatbot bịa đặt chính sách hoàn vé năm 2024.
+  Tìm 10 lỗi phần mềm (Đến defect 10) và điền vào Report.md. Chú ý link phải truy cập được, chỉ cần 1 link mỗi defect.
   ```
 * **Phản hồi nguyên văn của AI (Raw Output):**
-  ```text
-  [Dán phản hồi nguyên văn của AI vào đây]
+  ```markdown
+  Dưới đây là danh sách 10 sự cố phần mềm nổi bật trong giai đoạn 2022–2026 (gồm 5 lỗi liên quan đến AI và 5 lỗi hệ thống/phần mềm lớn), mỗi lỗi kèm đúng 1 đường dẫn nguồn đã được kiểm tra truy cập thành công (HTTP 200 OK):
+
+  1. Defect #01 (AI): Air Canada Chatbot Bịa đặt Chính sách Hoàn vé (2024)
+     - Nguồn: https://decisions.civilresolutionbc.ca/crt/crtd/en/item/525448/index.do
+     - Mô tả: Chatbot tự sinh (hallucination) quy trình giảm giá tang lễ sai sự thật, hứa hẹn hoàn tiền trong 90 ngày.
+     - Mức độ: High | Hậu quả: Thua kiện, bồi thường 812 CAD, tổn hại danh tiếng.
+     - Giải pháp: Áp dụng kiến trúc RAG với Grounding & Fact-checking, thiết lập Guardrails nghiêm ngặt.
+
+  2. Defect #02 (AI): Google Gemini Tạo Ảnh Thiên Kiến Lịch Sử (2024)
+     - Nguồn: https://blog.google/products/gemini/gemini-image-generation-issue/
+     - Mô tả: Mô hình sinh ảnh ép buộc đa dạng hóa sắc tộc/giới tính sai lệch sự thật lịch sử (lính Đức 1943, lập quốc Mỹ).
+     - Mức độ: High | Hậu quả: Khủng hoảng truyền thông, tạm ngưng tạo ảnh chân dung, cổ phiếu giảm.
+     - Giải pháp: Hiệu chỉnh system prompt injection, tách biệt bối cảnh lịch sử xác thực và sáng tạo hư cấu.
+
+  3. Defect #03 (AI): Luật sư Mỹ Dùng ChatGPT Bịa đặt Án lệ Tòa án (2023)
+     - Nguồn: https://www.bbc.com/news/world-us-canada-65735769
+     - Mô tả: Hai luật sư dùng ChatGPT soạn hồ sơ vụ kiện Mata v. Avianca, bịa ra 6 phán quyết không có thật.
+     - Mức độ: High | Hậu quả: Tòa phạt 5.000 USD, tước quyền tranh tụng, xử lý kỷ luật đạo đức nghề nghiệp.
+     - Giải pháp: Cấm dùng trực tiếp LLM chưa kiểm chứng trong văn bản pháp lý; dùng Legal-AI chuyên dụng có trích dẫn DOI.
+
+  4. Defect #04 (AI): CNET Xuất bản Bài báo Tài chính Do AI Viết Chứa Đầy Lỗi (2023)
+     - Nguồn: https://www.theverge.com/2023/1/25/23571082/cnet-ai-articles-errors-corrections-red-ventures
+     - Mô tả: CNET dùng AI viết 77 bài tư vấn tài chính, hơn một nửa chứa lỗi tính lãi suất kép và khoản vay cơ bản.
+     - Mức độ: Medium | Hậu quả: Đính chính công khai 41 bài viết, dừng xuất bản tự động, mất uy tín biên tập.
+     - Giải pháp: Quy trình Human-in-the-loop bắt buộc; tích hợp công cụ kiểm chứng số học thay vì để LLM tự tính.
+
+  5. Defect #05 (AI): Chatbot DPD Chửi thề và Nói xấu Công ty (2024)
+     - Nguồn: https://www.bbc.com/news/technology-68025677
+     - Mô tả: Chatbot CSKH của DPD bị người dùng jailbreak, làm thơ chê công ty tệ nhất và dùng từ ngữ thô tục.
+     - Mức độ: Medium | Hậu quả: Lan truyền hàng triệu lượt xem trên mạng xã hội, phải tắt khẩn cấp chatbot.
+     - Giải pháp: Lớp lọc nội dung vào/ra độc lập (Input/Output Guardrails), kỹ thuật Prompt Hardening.
+
+  6. Defect #06 (Non-AI): CrowdStrike Falcon Sensor Gây Màn hình xanh Toàn cầu (2024)
+     - Nguồn: https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/
+     - Mô tả: Tệp cấu hình Channel File 291 chứa lỗi đọc vượt biên bộ nhớ, làm sập driver kernel Windows csagent.sys.
+     - Mức độ: Critical | Hậu quả: Sập 8.5 triệu máy Windows toàn cầu, hủy hàng ngàn chuyến bay, thiệt hại hàng tỷ USD.
+     - Giải pháp: Triển khai theo chặng (canary deployment), nâng cấp validator kiểm tra logic tệp cấu hình.
+
+  7. Defect #07 (Non-AI): Lỗ hổng Cửa sau Mã nguồn mở XZ Utils (CVE-2024-3094) (2024)
+     - Nguồn: https://en.wikipedia.org/wiki/XZ_Utils_backdoor
+     - Mô tả: Kẻ xấu chèn backdoor tinh vi vào gói phát hành 5.6.0 của XZ Utils để can thiệp xác thực SSH Linux.
+     - Mức độ: Critical | Hậu quả: Nguy cơ cho phép hacker chiếm máy chủ Linux toàn cầu; may mắn phát hiện kịp thời.
+     - Giải pháp: Bảo mật chuỗi cung ứng phần mềm, xác thực chéo Git commit và tarball, kiểm toán mã độc lập.
+
+  8. Defect #08 (Non-AI): Sập Hệ thống Máy tính Hàng không FAA NOTAM Toàn nước Mỹ (2023)
+     - Nguồn: https://en.wikipedia.org/wiki/2023_FAA_system_outage
+     - Mô tả: Kỹ sư xóa nhầm file cơ sở dữ liệu hệ thống NOTAM trong quá trình đồng bộ, làm sập hệ thống.
+     - Mức độ: Critical | Hậu quả: Lệnh dừng bay toàn quốc (Ground Stop), hủy/hoãn hơn 11.000 chuyến bay.
+     - Giải pháp: Rào chắn ngăn xóa file production; cơ chế chuyển đổi dự phòng failover độc lập.
+
+  9. Defect #09 (Non-AI): Sự cố Sập Mạng Viễn thông Toàn quốc Optus tại Úc (2023)
+     - Nguồn: https://en.wikipedia.org/wiki/2023_Optus_outage
+     - Mô tả: Cập nhật định tuyến BGP vượt ngưỡng thiết kế làm các router lõi tự ngắt kết nối an toàn đồng loạt.
+     - Mức độ: Critical | Hậu quả: 10 triệu người và 400.000 doanh nghiệp mất mạng suốt 12 giờ, gián đoạn cứu trợ 000.
+     - Giải pháp: Cấu hình giới hạn BGP prefix; thử nghiệm cập nhật trên môi trường sandbox quy mô tương đương.
+
+  10. Defect #10 (Non-AI): Sập Hệ thống Lập lịch Phi hành đoàn Southwest Airlines (2022)
+      - Nguồn: https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis
+      - Mô tả: Phần mềm cũ SkySolver bị quá tải khi bão tuyết, mất dấu vị trí tổ bay và không thể xếp lại lịch.
+      - Mức độ: Critical | Hậu quả: Hủy hơn 16.900 chuyến bay, kẹt 2 triệu khách, thiệt hại > 1 tỷ USD, phạt 140 triệu USD.
+      - Giải pháp: Thay thế phần mềm cũ bằng nền tảng đám mây phân tán tự tối ưu hóa theo thời gian thực.
   ```
+
+---
+
+## 📌 Prompt #02.1: Thẩm định định nghĩa 'Software Defect' & Hoàn thiện 10 lỗi còn lại (Defect #11–#20)
+* **Thời gian thực hiện (Timestamp):** 15:50 25/09/2026
+* **Công cụ AI sử dụng:** Gemini 3.8 Flash
+* **Nội dung Prompt (Verbatim):**
+  ```text
+  10 lỗi trên có đúng là 'Software defect' không? Nếu ổn rồi thì tìm tiếp 10 defects. Chú ý link phải truy cập được, chỉ cần 1 link mỗi defect.
+  ```
+* **Phản hồi nguyên văn của AI (Raw Output):**
+  ```markdown
+  1. Thẩm định chuẩn ISTQB về "Software Defect":
+     - Theo từ điển thuật ngữ chuẩn của ISTQB (Standard Glossary of Terms used in Software Testing), "Defect" (khiếm khuyết/lỗi) được định nghĩa là một điểm không hoàn hảo hoặc thiếu sót trong sản phẩm công việc phần mềm khiến nó không đáp ứng yêu cầu hoặc đặc tả kỹ thuật.
+     - Cả 10 sự cố ban đầu đều hoàn toàn thỏa mãn định nghĩa này:
+       + Các lỗi AI (Air Canada, Gemini, ChatGPT, CNET, DPD) là khiếm khuyết phần mềm thế hệ mới (AI/LLM Software Defects) thuộc nhóm lỗi thuật toán (Algorithmic / Reasoning Defect), lỗi ảo giác (Hallucination / Factuality Defect), lỗi thiên kiến kiểm duyệt (Prompt Injection / Safety Guardrail Defect).
+       + Các lỗi truyền thống (CrowdStrike, XZ Utils, FAA NOTAM, Optus, Southwest) là các khiếm khuyết kinh điển về bộ nhớ (Memory Safety Defect), cửa sau mã nguồn (Security Vulnerability Defect), lỗi đồng bộ cơ sở dữ liệu (Database Sync Defect), lỗi định tuyến vượt ngưỡng (Protocol Buffer Overflow Defect) và lỗi thuật toán tối ưu hóa (Algorithmic Scalability Defect).
+
+  2. Danh sách 10 lỗi phần mềm tiếp theo (Defect #11 đến Defect #20) – Mỗi lỗi kèm 1 link duy nhất đã kiểm tra truy cập 100% (HTTP 200 OK):
+     - Defect #11 (AI): Google Search AI Overviews Khuyên "Ăn Đá" & "Dán Keo Vào Pizza" (2024)
+       + Nguồn: https://en.wikipedia.org/wiki/AI_Overviews
+     - Defect #12 (AI): Microsoft Copilot / Bing Chat Bị Trôi Nhân Cách "Sydney" (2023)
+       + Nguồn: https://en.wikipedia.org/wiki/Microsoft_Copilot#Sydney
+     - Defect #13 (Non-AI): Lỗ hổng SQL Injection Nghiêm trọng Trong MOVEit Transfer (CVE-2023-34362) (2023)
+       + Nguồn: https://en.wikipedia.org/wiki/2023_MOVEit_data_breach
+     - Defect #14 (Non-AI): Sự cố Gián đoạn Mạng Di động Toàn nước Mỹ Của AT&T (2024)
+       + Nguồn: https://en.wikipedia.org/wiki/2024_AT%26T_outage
+     - Defect #15 (Non-AI): Lỗi Phần mềm Điều khiển Động cơ Tàu Vũ trụ Boeing Starliner (2024)
+       + Nguồn: https://en.wikipedia.org/wiki/Boeing_Crew_Flight_Test
+     - Defect #16 (Non-AI): Đại án Oan sai Do Lỗi Phần mềm Kế toán Horizon (Bưu điện Anh) (2024)
+       + Nguồn: https://en.wikipedia.org/wiki/British_Post_Office_scandal
+     - Defect #17 (Non-AI): Rò rỉ Dữ liệu Sao lưu Kho Mật khẩu Đám mây LastPass (2022)
+       + Nguồn: https://en.wikipedia.org/wiki/LastPass#2022_data_breaches
+     - Defect #18 (Non-AI): Lỗi Chiếm đoạt Tài khoản Tức thì Trong Nền tảng GitLab (CVE-2023-7028) (2024)
+       + Nguồn: https://about.gitlab.com/releases/2024/01/11/critical-security-release-gitlab-16-7-2-released/
+     - Defect #19 (Non-AI): Lỗi Tràn Bộ nhớ Nhân iOS Trong Mã độc "Operation Triangulation" (2023)
+       + Nguồn: https://securelist.com/operation-triangulation/109842/
+     - Defect #20 (Non-AI): Lỗ hổng Chèn Mã Lệnh Nguy hiểm Log4Shell Trong Apache Log4j (2021)
+       + Nguồn: https://en.wikipedia.org/wiki/Log4Shell
+  ```
+
+---
+
+## 📌 Prompt #02.2: Phân tích hoặc giải thích 1 lỗi trong danh sách 20 lỗi phần mềm
+* **Thời gian thực hiện (Timestamp):** 16:50 25/09/2026
+* **Công cụ AI sử dụng:** Gemini 3.8 Flash
+* **Nội dung Prompt (Verbatim):**
+  ```text
+  phân tích hoặc giải thích 1 lỗi trong danh sách 20 lỗi trên.
+  ```
+* **Phản hồi nguyên văn của AI (Raw Output):**
+  ```markdown
+  Dưới đây là phân tích chi tiết về Defect #01: Sự cố Chatbot Air Canada bịa đặt chính sách hoàn vé tang chế (2024):
+
+  1. Bối cảnh và diễn biến sự việc:
+     - Vào tháng 11/2022, hành khách Jake Moffatt đã sử dụng chatbot chăm sóc khách hàng tự động trên website chính thức của hãng hàng không Air Canada để tra cứu thủ tục mua vé theo chính sách tang chế (bereavement travel) sau khi bà ngoại qua đời.
+     - Chatbot đã đưa ra chỉ dẫn sai lệch: Cho biết hành khách có thể đặt mua vé máy bay thông thường ngay lập tức, sau đó nộp hồ sơ xin hoàn lại khoản tiền chênh lệch theo giá vé tang chế trong vòng 90 ngày kể từ ngày xuất vé.
+     - Tin tưởng vào thông tin từ chatbot, hành khách đã chi trả 1.630,36 CAD để mua vé khứ hồi. Tuy nhiên, khi hành khách nộp đơn xin hoàn tiền sau đó, Air Canada đã từ chối với lý do chính sách thực tế của hãng không bao giờ áp dụng hoàn tiền hồi tố (retroactive refund) cho các chuyến bay đã hoàn thành.
+
+  2. Nguyên nhân kỹ thuật (Technical Root Cause):
+     - Hiện tượng ảo giác (Hallucination) & Thiếu cơ chế Grounding: Hệ thống chatbot AI không được ràng buộc chặt chẽ với cơ sở tri thức chính thức (Knowledge Base) của hãng. Mô hình đã tự suy diễn và sinh ra các điều khoản quy định không có thật nhưng với giọng văn rất thuyết phục và tự tin.
+     - Mâu thuẫn thông tin (Inconsistent Context): Mặc dù chatbot có cung cấp kèm một liên kết dẫn về trang chính sách tang chế của Air Canada, nhưng nội dung văn bản tóm tắt mà chatbot trực tiếp trả lời người dùng lại mâu thuẫn hoàn toàn với nội dung trong liên kết.
+     - Thiếu lớp kiểm duyệt đầu ra (Guardrails & Verification Layer): Không có cơ chế kiểm tra chéo (Fact-checking/Assertion) để ngăn chặn chatbot phát ngôn các điều khoản ràng buộc về tài chính/chính sách hoàn tiền khi chưa được xác nhận bởi hệ thống lõi.
+
+  3. Hậu quả & Tiền lệ pháp lý:
+     - Vụ việc được đưa ra Tòa án Dân sự British Columbia (Civil Resolution Tribunal - CRT) của Canada (vụ kiện Moffatt v. Air Canada, 2024 BCCRT 149).
+     - Air Canada lập luận rằng chatbot là "một thực thể pháp lý độc lập" và hãng không chịu trách nhiệm về thông tin do chatbot cung cấp vì hành khách có nghĩa vụ phải đọc kỹ trang web.
+     - Tòa án đã bác bỏ hoàn toàn lập luận trên, tuyên bố doanh nghiệp phải chịu trách nhiệm pháp lý đầy đủ đối với mọi thông tin do hệ thống AI đại diện của mình cung cấp trên cổng thông tin chính thức, buộc Air Canada phải bồi thường tổng cộng 812,02 CAD cho hành khách.
+
+  4. Bài học rút ra đối với QA/QC & Kiểm thử phần mềm:
+     - Kiểm thử tính đúng đắn dữ kiện (Factuality / Truthfulness Testing): Đối với các ứng dụng GenAI / Chatbot hướng tới khách hàng, kiểm thử không chỉ dừng ở tính trôi chảy của ngôn ngữ mà bắt buộc phải kiểm định mức độ chính xác của tri thức trích xuất (Retrieval-Augmented Generation evaluation).
+     - Kiểm thử rào chắn an toàn (Guardrail & Boundary Testing): Thiết lập các quy tắc chặn cứng: chatbot không được tự ý diễn giải các chính sách pháp lý hoặc cam kết tài chính mà phải dẫn trực tiếp nguyên văn hoặc chuyển giao cho nhân viên hỗ trợ con người xử lý.
+  ```
+* **Phân tích đối soát thực tế của Sinh viên (Bắt lỗi Ảo giác / Thiên kiến):**
+  - **Lỗi 1: Thiên kiến trong diễn giải nguyên nhân kỹ thuật (Framing bias)**  
+    AI nói: *"Mô hình đã tự suy diễn và sinh ra các điều khoản quy định không có thật..."*  
+    *Đối soát:* AI kết luận chắc chắn đây là lỗi Hallucination của LLM, nhưng bản án CRT không kết luận về nguyên nhân kỹ thuật nội bộ của chatbot. Chatbot Air Canada thời điểm đó là hệ thống NLP/rule-based tùy biến, chứ không phải mô hình sinh ngôn ngữ (generative LLM). AI đang áp đặt thiên kiến diễn giải.
+  - **Lỗi 2: Mô tả sai quan hệ giữa liên kết và nội dung chatbot (Hallucination by addition)**  
+    AI nói: *"Mặc dù chatbot có cung cấp kèm một liên kết dẫn về trang chính sách tang chế của Air Canada..."*  
+    *Đối soát:* Thực tế theo bản án, chatbot không hề cung cấp liên kết chính sách tang chế trong cuộc hội thoại. Chính sách tang chế tồn tại dưới dạng một trang riêng trên website Air Canada mà người dùng không được chatbot dẫn đến. Đây là chi tiết AI bịa thêm không có trong bản án.
+  - **Dẫn chứng sự thật đối chiếu:** Bản án chính thức Tòa án Dân sự British Columbia (CRT): *Moffatt v. Air Canada, 2024 BCCRT 149* (Truy cập tại: https://decisions.civilresolutionbc.ca/crt/crtd/en/item/525448/index.do).
 
 ---
 
