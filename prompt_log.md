@@ -305,13 +305,36 @@
 ---
 
 ## 📌 Prompt #03: Gợi ý Test Cases cho Thiết bị gia dụng (Phục vụ Requirement 3)
-* **Thời gian thực hiện (Timestamp):** [Ví dụ: 16:00 24/09/2026]
-* **Công cụ AI sử dụng:** [Ví dụ: Claude 3.5 Sonnet]
+* **Thời gian thực hiện (Timestamp):** 00:25 26/09/2026
+* **Công cụ AI sử dụng:** Gemini 3.8 Flash
 * **Nội dung Prompt (Verbatim):**
   ```text
-  Hãy thiết kế 15 test cases kiểm thử chức năng cho thiết bị [Tên thiết bị, ví dụ: Quạt đứng thông minh Xiaomi Smart Fan 2 Lite] gồm các cột: Test ID, Objective, Input, Steps, Expected Result.
+  Hãy thiết kế danh sách test cases kiểm thử chức năng cho thiết bị Quạt đứng cơ học (không có hẹn giờ, gồm các nút bấm số 0, 1, 2, 3, tuốc-năng đảo hướng, khớp ngửa cúi và khóa nâng hạ chiều cao) theo chuẩn: Test ID, Objective, Precondition, Input, Steps, Expected Result.
   ```
 * **Phản hồi nguyên văn của AI (Raw Output):**
-  ```text
-  [Dán phản hồi nguyên văn của AI vào đây]
+  ```markdown
+  Dưới đây là 12 test cases kiểm thử chức năng cơ bản cho Quạt đứng cơ học:
+
+  | Test ID | Objective | Precondition | Input | Steps | Expected Result |
+  | :---: | :--- | :--- | :--- | :--- | :--- |
+  | **TC01** | Khởi động số 1 (Gió nhẹ) từ trạng thái tắt | Quạt cắm nguồn 220V, đang ở phím 0 (Tắt) | Nhấn phím số 1 | 1. Cắm nguồn 220V<br>2. Nhấn phím số 1 | Phím 1 chìm xuống giữ vị trí; cánh quạt quay êm, đạt tốc độ số 1 |
+  | **TC02** | Chuyển cấp độ gió từ số 1 lên số 2 (Gió vừa) | Quạt đang chạy ở số 1 | Nhấn phím số 2 | 1. Nhấn nút phím số 2 | Phím số 1 tự nảy lên, phím số 2 chìm xuống; tốc độ gió tăng mức vừa |
+  | **TC03** | Chuyển cấp độ gió từ số 2 lên số 3 (Gió mạnh) | Quạt đang chạy ở số 2 | Nhấn phím số 3 | 1. Nhấn nút phím số 3 | Phím số 2 nảy lên, phím số 3 chìm xuống; quạt đạt tốc độ quay tối đa |
+  | **TC04** | Giảm cấp độ gió từ số 3 về số 1 | Quạt đang chạy ở số 3 | Nhấn phím số 1 | 1. Nhấn nút phím số 1 khi đang số 3 | Phím số 3 tự nảy lên, quạt giảm dần vòng quay về tốc độ 1 ổn định |
+  | **TC05** | Tắt quạt bằng phím số 0 (Off) | Quạt đang quay ở số bất kỳ (ví dụ số 2) | Nhấn phím số 0 | 1. Nhấn nút số 0 (Off) | Phím số đang bật tự nảy lên hoàn toàn, ngắt điện motor, cánh quạt dừng tự do |
+  | **TC06** | Bật tuốc-năng quay đảo hướng gió | Quạt đang quay tốc độ bất kỳ | Nhấn núm tuốc-năng | 1. Ấn núm tuốc-năng trên bầu quạt xuống | Trục cơ ăn khớp, cụm đầu quạt đảo hướng góc rộng từ trái sang phải (~80°–90°) |
+  | **TC07** | Cố định hướng gió tại một góc xác định | Quạt đang đảo hướng gió | Kéo núm tuốc-năng | 1. Chờ quạt quay đến góc mong muốn<br>2. Kéo núm tuốc-năng lên | Cụm đầu quạt dừng đảo hướng ngay tại vị trí góc đó, tiếp tục thổi gió cố định |
+  | **TC08** | Điều chỉnh góc cúi của lồng quạt | Quạt đang đứng trên mặt sàn | Tác dụng lực tay ấn xuống | 1. Một tay giữ cổ quạt<br>2. Một tay ấn cụm lồng quạt chúc xuống | Khớp ngàm bánh cóc kêu tiếng cạch nhẹ, giữ chắc góc cúi hướng xuống |
+  | **TC09** | Điều chỉnh góc ngửa của lồng quạt | Quạt đang ở trạng thái cúi | Tác dụng lực tay nâng lên | 1. Dùng tay nâng cụm lồng quạt ngửa lên trên | Khớp giữ lồng quạt ngửa lên góc tối đa, không bị gục do trọng lượng lồng |
+  | **TC10** | Nâng cao và hạ thấp chiều cao thân quạt | Quạt đang đặt trên mặt phẳng | Xoay van khóa cổ và kéo trục | 1. Vặn lỏng van khóa thân<br>2. Kéo trục quạt lên/xuống<br>3. Vặn chặt lại van khóa | Ống rút trượt êm, van khóa siết chặt cố định chiều cao, không bị tụt |
+  | **TC11** | Khởi động trực tiếp tốc độ tối đa (Số 3) | Quạt đang tắt (số 0), cắm nguồn | Nhấn thẳng phím số 3 | 1. Nhấn thẳng phím số 3 từ trạng thái tắt | Motor đề-pa khởi động lên tốc độ cao tức thì mà không cần qua số 1 hay 2 |
+  | **TC12** | Chuyển đổi nhanh liên tục giữa các phím số | Quạt đang cắm nguồn | Nhấn liên tiếp 1 -> 2 -> 3 -> 0 | 1. Bấm chuyển đổi nhanh luân phiên giữa các phím trong 3 giây | Hệ thống lẫy cơ đàn hồi tốt, không kẹt phím hoặc hai phím cùng giữ chìm |
   ```
+* **Đánh giá & Chỉnh sửa của Sinh viên:**
+  - AI chỉ đưa ra các ca kiểm thử chức năng theo kịch bản thông thường (Happy path), hoàn toàn không nhận diện được các tình huống biên vật lý (Edge Cases) trong môi trường cơ điện thực tế.
+  - Sinh viên tự thiết kế bổ sung 3 ca kiểm thử biên (Edge Cases: TC13, TC14, TC15) trong Báo cáo:
+    1. *TC13:* Nhấn đồng thời 2 nút số cùng lúc (Kiểm tra cơ chế khóa cơ học chống kẹt tiếp điểm).
+    2. *TC14:* Ngắt nguồn điện đột ngột khi chạy số 3 và cắm lại (Kiểm tra phản ứng phục hồi motor an toàn).
+    3. *TC15:* Cản trở cơ học chuyển động đảo chiều tuốc năng (Kiểm tra bộ ly hợp trượt bánh răng bảo vệ motor).
+  - Sinh viên trực tiếp tiến hành chạy kiểm thử thực tế trên chiếc quạt đứng Senko LS103 tại phòng, ghi nhận lỗi hư hỏng phần cứng tại TC02 (Nút 2 bị lỗi không quay cánh quạt $\to$ Verdict: FAIL) và các ca còn lại PASS.
+  - Toàn bộ 15 test cases hoàn thiện đã được sinh viên tổng hợp, chuẩn hóa cấu trúc 8 cột và xuất ra file bảng tính [TestCases.xlsx] làm minh chứng artifact chính thức cho Requirement 3.
