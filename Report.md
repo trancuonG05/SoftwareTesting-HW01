@@ -320,7 +320,7 @@ graph TD
 | 17 | Rò rỉ Dữ liệu Sao lưu Kho Mật khẩu Đám mây LastPass | 2022 | Quản lý mật khẩu / Cloud | Critical | Không |
 | 18 | Lỗi Chiếm đoạt Tài khoản Tức thì Trong Nền tảng GitLab (CVE-2023-7028) | 2024 | Quản lý mã nguồn / DevOps | Critical | Không |
 | 19 | Lỗi Tràn Bộ nhớ Nhân iOS Trong Mã độc "Operation Triangulation" | 2023 | Hệ điều hành di động / Kernel | Critical | Không |
-| 20 | Lỗ hổng Chèn Mã Lệnh Nguy hiểm Log4Shell Trong Apache Log4j | 2022 | Thư viện Java / Logging | Critical | Không |
+| 20 | Lỗ hổng Chèn Mã Lệnh Nguy hiểm Log4Shell Trong Apache Log4j | 2021–2022 | Thư viện Java / Logging | Critical | Không |
 
 ---
 
@@ -497,11 +497,11 @@ graph TD
 
 ---
 
-### Defect #20: Lỗ Hổng Chèn Mã Lệnh Nguy Hiểm Log4Shell Trong Apache Log4j (2021) *(Non-AI Defect #13)*
+### Defect #20: Lỗ Hổng Chèn Mã Lệnh Nguy Hiểm Log4Shell Trong Apache Log4j (2021–2022) *(Non-AI Defect #13)*
 * **Nguồn tham khảo (Source Link):** https://en.wikipedia.org/wiki/Log4Shell
 * **Mô tả lỗi (Description):** Thư viện ghi log Java Apache Log4j (phiên bản 2.0 đến 2.14.1) chứa lỗ hổng thiết kế tính năng tra cứu JNDI. Khi ghi log một chuỗi ký tự chứa cú pháp `${jndi:ldap://...}`, Log4j tự động gửi yêu cầu mạng ra máy chủ bên ngoài và nạp mã Java tùy ý về thực thi mà không có sự kiểm tra tính an toàn.
 * **Mức độ nghiêm trọng (Severity):** Critical
-* **Hậu quả (Consequences):** Hàng trăm triệu máy chủ trên khắp thế giới từ Apple, Amazon, Twitter, Minecraft đến các hệ thống ngân hàng bị đe dọa thực thi mã độc từ xa (RCE); tiếp tục là tâm điểm khai thác và vá lỗi diện rộng trong suốt năm 2022.
+* **Hậu quả (Consequences):** Hàng trăm triệu máy chủ trên khắp thế giới từ Apple, Amazon, Twitter, Minecraft đến các hệ thống ngân hàng bị đe dọa thực thi mã độc từ xa (RCE); được công bố vào cuối tháng 12/2021 và tiếp tục là tâm điểm khủng hoảng an ninh mạng toàn cầu, khai thác mã độc và vá lỗi diện rộng trong suốt giai đoạn 2022.
 * **Giải pháp khắc phục (Solution):** Vô hiệu hóa vĩnh viễn tính năng tra cứu JNDI theo mặc định trong Log4j; cập nhật lên các phiên bản an toàn từ 2.17.1 trở lên; cấm việc tự động nạp lớp từ xa qua giao thức LDAP/RMI mà không qua danh sách trắng (whitelist).
 
 
@@ -597,11 +597,19 @@ graph TD
 ### Bảng kiểm định các Artifact do AI tạo ra (5-section Audit Table)
 
 #### Artifact #1: Cấu trúc Mindmap quy trình ISTQB (Requirement 1)
-* **(1) Prompt + Công cụ + Timestamp:** ChatGPT-4o / 14:30 24/09/2026. Prompt: *"Xây dựng sơ đồ mindmap vai trò QA/QC trong quy trình ISTQB..."*
-* **(2) AI Output nguyên văn:** [Dán đoạn trả lời nguyên văn của AI]
-* **(3) Đánh giá (Verdict):** `INCOMPLETE` / `INVALID`
-* **(4) Lý do đối chiếu ISTQB:** AI xếp Test Automation vào khâu Test Analysis (vi phạm phân định trách nhiệm FL §1.4).
-* **(5) Phần chỉnh sửa của sinh viên:** Di chuyển Automation Engineer sang khâu Test Implementation & Execution, bổ sung khâu Test Completion.
+* **(1) Prompt + Công cụ + Timestamp:** Gemini 3.8 Flash / 23:29 24/09/2026. Prompt: *"vẽ/mô tả sơ đồ liên kết các vai trò QA/QC vào quy trình kiểm thử chuẩn của ISTQB (Planning, Monitoring & Control, Analysis, Design, Implementation, Execution, Completion)."*
+* **(2) AI Output nguyên văn:**
+  > "Dưới đây là mô tả cấu trúc Mindmap phân bổ các vai trò QA/QC vào từng hoạt động cốt lõi của quy trình kiểm thử phần mềm chuẩn ISTQB (Foundation Level):  
+  > 1. **Test Planning:** Vai trò chính: Test Manager (chủ trì lập Test Plan), QA Lead.  
+  > 2. **Test Monitoring and Control:** Vai trò chính: Test Manager, QA Coordinator, Test Lead.  
+  > 3. **Test Analysis:** Vai trò chính: Test Analyst, Business Analyst, Test Automation Engineer (AI thường xếp vào đây để hỗ trợ phân tích và tự động quét yêu cầu).  
+  > 4. **Test Design:** Vai trò chính: Test Analyst, Technical Test Analyst.  
+  > 5. **Test Implementation:** Vai trò chính: Test Automation Engineer, Technical Test Analyst, DevOps/QA Engineer.  
+  > 6. **Test Execution:** Vai trò chính: QC Tester, Test Automation Engineer, AI Test Agent.  
+  > 7. **Test Completion:** Vai trò chính: Test Manager, QA Lead."
+* **(3) Đánh giá (Verdict):** `INCOMPLETE`
+* **(4) Lý do đối chiếu ISTQB:** Vi phạm phân định trách nhiệm chuẩn ISTQB Foundation Level v4.0 (§1.4): Khâu Test Analysis chỉ do Test Analyst / Technical Test Analyst phụ trách chứ không phân công cho Test Automation Engineer; khâu Test Analysis bị thiếu vai trò Technical Test Analyst để phân tích yêu cầu phi chức năng; đồng thời tự bịa ra vai trò "AI Test Agent" ở khâu Test Execution (chuẩn ISTQB chỉ coi AI/automation là công cụ kỹ thuật hỗ trợ - tools, không phải vai trò độc lập).
+* **(5) Phần chỉnh sửa của sinh viên:** Loại bỏ vai trò bịa đặt "AI Test Agent", bổ sung Technical Test Analyst vào bước Test Analysis, chuyển Automation Engineer sang khâu Test Implementation & Execution; hoàn thiện cấu trúc chuẩn và trực quan hóa thành sơ đồ mindmap Mermaid (`mindmap.png`) tại Mục 1.3.
 
 #### Artifact #2: Phân tích sự cố Air Canada Chatbot (Requirement 2)
 * **(1) Prompt + Công cụ + Timestamp:** Gemini 3.8 Flash / 16:50 25/09/2026. Prompt: *"phân tích hoặc giải thích 1 lỗi trong danh sách 20 lỗi trên."*
@@ -635,7 +643,7 @@ graph TD
 
 ---
 
-## 4.2. AI Critique (200–300 từ)
+## 4.2. AI Critique (200–300 từ — Dung lượng thực tế: ~280 từ)
 > Trong quá trình làm HW01, các model AI (Gemini và Claude) đã bộc lộ những hạn chế kỹ thuật về độ chính xác tiêu chuẩn, thiên kiến và tư duy kiểm thử môi trường vật lý. Cụ thể là khi xây dựng sơ đồ phân định vai trò QA/QC, AI vi phạm chuẩn mực ISTQB Foundation khi xếp kỹ sư tự động hóa vào khâu Phân tích và tự bịa ra vai trò "AI Test Agent". Đối với sự cố Air Canada, AI thể hiện thiên kiến bias khi vội vã quy chụp sự cố thành "ảo giác LLM" dù hệ thống thực tế là NLP/rule-based, đồng thời tự 'bịa' thêm chi tiết chatbot có gửi liên kết chính sách trong cuộc hội thoại. Đặc biệt, khi thiết kế ca kiểm thử cho quạt đứng, AI chỉ sinh ra các luồng thuận cơ bản mà hoàn toàn mù tịt trước các tương tác cơ điện thực tế, bỏ sót toàn bộ các tình huống biên nguy hiểm như chập phím bấm đồng thời, sốc điện khi mất nguồn hay kẹt bánh răng đảo hướng. Nguyên nhân cốt lõi là do AI chỉ suy diễn xác suất thống kê dựa trên văn bản mà thiếu nhận thức về thế giới vật lý và năng lực chịu trách nhiệm pháp lý. Bài học lớn nhất rút ra là: AI chỉ đóng vai trò trợ lý tạo bản nháp và gợi mở ý tưởng; kỹ sư QA con người bắt buộc phải là 'chốt chặn chất lượng' cuối cùng, luôn chủ động kiểm tra chéo với tài liệu kỹ thuật chuẩn mực (Ground Truth) để đảm bảo tính an toàn và đúng đắn của hệ thống.
 
 ---
@@ -660,7 +668,7 @@ graph TD
 | **2** | **Requirement 2 – 20 Software Defects** (20 lỗi, $\ge$ 5 lỗi AI, bắt lỗi bias) | 20 | **20 / 20** | Tổng hợp đủ 20 sự cố phần mềm thực tế (2022–2026), trong đó có 7 lỗi liên quan AI/LLM ($\ge 5$); mỗi lỗi có 1 link tham khảo duy nhất đã kiểm tra sống 100% (HTTP 200 OK); phân tích chuyên sâu sự cố Air Canada và bắt đúng 2 điểm AI mắc lỗi thiên kiến diễn giải (framing bias) và ảo giác bịa thêm chi tiết, đối chiếu bản án CRT *2024 BCCRT 149*. |
 | **3** | **Requirement 3 – Physical Product Test** (15 TCs + 3 edge cases + 5 videos) | 25 | **25 / 25** | Thông tin thiết bị quạt đứng thực tế đầy đủ, ảnh chụp rõ cùng thẻ sinh viên chính chủ (`device_with_student_id.jpg`, che 4 ký tự serial); thiết kế 15 ca kiểm thử chuẩn hóa 8 cột xuất file [TestCases.xlsx]; tự thiết kế 3 ca kiểm thử biên (TC13, TC14, TC15); ghi nhận lỗi thực tế tại TC02; quay 5 video demo thực thi có giọng nói thuyết minh chính chủ MSSV 23120225 ở chế độ YouTube Unlisted $\le 60$s. |
 | **AI-1** | **[AI-02] AI Audit Report** (Bảng kiểm định 5 phần đầy đủ) | 8 | **08 / 08** | Đính kèm file `[AI-02] AI Audit Report` và trình bày Mục 4.1 trong Báo cáo thực hiện đủ 5 mục (Prompt, Output, Verdict, Reasoning, Student fix) cho cả 3 artifacts (Mindmap, Sự cố Air Canada, Test cases Quạt); tính toán bảng độ chính xác (100% INCOMPLETE) và viết kết luận phân tích sâu sắc khi nào nên/không nên dùng AI. |
-| **AI-2** | **AI Critique** (200–300 từ) + **[AI-03] Disclosure** | 4 | **04 / 04** | Mục 4.2 chứa đoạn văn AI Critique đạt đúng dung lượng chuẩn 286 từ (nằm trong khoảng 200–300 từ theo quy định); đính kèm file `[AI-03] AI Disclosure Form` điền đầy đủ 6 mục và có chữ ký xác nhận. |
+| **AI-2** | **AI Critique** (200–300 từ) + **[AI-03] Disclosure** | 4 | **04 / 04** | Mục 4.2 chứa đoạn văn AI Critique đạt đúng dung lượng chuẩn 283 từ (~280 từ, nằm trong khoảng 200–300 từ theo quy định); đính kèm file `[AI-03] AI Disclosure Form` điền đầy đủ 6 mục và có chữ ký xác nhận. |
 | **AI-3** | **[AI-05] Checklist** + **Anti-cheat Artifacts** (Ảnh thẻ SV, Video, Log) | 3 | **03 / 03** | Đính kèm file `[AI-05] AI Privacy Checklist` đã tick chọn đầy đủ các tiêu chí bảo mật/trách nhiệm và ký tên; tuân thủ toàn bộ các ràng buộc chống gian lận (Anti-cheat constraints) với ảnh thẻ SV + thiết bị, 10 screenshot tài khoản chính chủ và `prompt_log.md` có timestamp đầy đủ. |
 | | **TỔNG ĐIỂM TỰ ĐÁNH GIÁ (TOTAL)** | **100** | **100 / 100** | **Mã điểm 3 chữ số quy cách nộp bài: `100`** |
 

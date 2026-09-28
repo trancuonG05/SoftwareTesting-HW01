@@ -34,7 +34,7 @@
 - [x] **Mọi artifact AI sinh đã được gắn tag trong AI Audit Report:** Cả 3 artifacts (Sơ đồ Mindmap, Giải thích sự cố Air Canada, 12 Test cases quạt đứng) đều được kiểm định đầy đủ 5 phần trong `[AI-02]`.
 - [x] **Mọi trích dẫn AI đã được xác minh (nguồn thực sự tồn tại):** 100% đường link nguồn của 20 lỗi phần mềm và bản án pháp lý CRT *2024 BCCRT 149* đều đã kiểm tra truy cập thành công (HTTP 200 OK).
 - [x] **Mọi kịch bản / test cases AI sinh đã được thực thi và test:** 15 test cases (kèm 3 ca biên) đã được thử nghiệm trực tiếp trên thiết bị quạt đứng vật lý và lưu kết quả vào file [TestCases.xlsx](file:///c:/04_KTPM/CSC13003-CQ-Software%20Testing-CT4-VN/HW01/TestCases.xlsx).
-- [x] **AI Critique 200–300 chữ đã có trong báo cáo:** Đã hoàn thiện đoạn văn phản biện 286 từ tại Mục 4.2 của `Report.md`.
+- [x] **AI Critique 200–300 chữ đã có trong báo cáo:** Đã hoàn thiện đoạn văn phản biện 283 từ (~280 từ) tại Mục 4.2 của `Report.md`.
 - [x] **Đoạn Mandatory Disclosure ở cuối báo cáo:** Đã dán nguyên văn cam kết chuẩn tại Mục 4.3 của `Report.md`.
 - [x] **Đính kèm AI Use Disclosure Form:** Đã hoàn tất biểu mẫu `[AI-03]`.
 - [x] **Sẵn sàng cho vấn đáp ngẫu nhiên 5–7 phút tuần kế nộp bài (Oral Defense):** Nắm vững 3 ca kiểm thử biên (TC13, TC14, TC15), các lỗi sai chuẩn ISTQB và lỗi ảo giác của AI đã phát hiện.
